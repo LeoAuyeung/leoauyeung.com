@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    path { fill: #2f5bd3; }
+    @media (prefers-color-scheme: dark) { path { fill: #86a4f5; } }
+  </style>
+  <!-- "LA" monogram -->
+  <path d="M4 6h3.4v16.8H15V26H4z" />
+  <path d="M20.6 6h3.6L31 26h-3.6l-1.6-4.9h-6.9L17.3 26h-3.5zm-.2 12.1h4.6l-2.3-7.2z" />
+</svg>

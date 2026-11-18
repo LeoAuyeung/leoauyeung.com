@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Base title="Not found" description="This page doesn’t exist." noindex>
+  <Nav showName />
+  <main id="main" class="wrap nf">
+    <h1 class="label">404</h1>
+    <p class="nf__line">This page took the wrong train. <a href="/">Head back home →</a></p>
+  </main>
+</Base>
+
+<style>
+  .nf { min-height: 70svh; display: grid; align-content: center; gap: var(--s-3); }
+  .nf__line { font-size: var(--fs-hero); line-height: var(--lh-hero); max-width: 28ch; }
+  .nf__line a { color: var(--accent); }
+</style>
