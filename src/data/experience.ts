@@ -1,12 +1,17 @@
+export interface Role {
+  title: string;
+  start: string; // "Mar 2025"
+  end: string; // "Apr 2026" or "Present"
+}
+
 export interface Job {
   company: string;
   url?: string;
-  title: string;
-  start: string; // "MAR 2025"
-  end: string; // "APR 2026" or "PRESENT"
   city: string;
-  /** One line about the team, e.g. "Fraud User Interventions team" */
+  /** Written once per company, under all roles. */
   team: string;
+  /** Newest first. The first role's title and dates go on the heading lines. */
+  roles: Role[];
 }
 
 export interface EarlierItem {
@@ -20,20 +25,19 @@ export const jobs: Job[] = [
   {
     company: 'Stripe',
     url: 'https://stripe.com',
-    title: 'Software Engineer II',
-    start: 'Mar 2025',
-    end: 'Apr 2026',
     city: 'New York, NY',
-    team: 'Fraud User Interventions team',
+    team: 'Risk — Fraud User Interventions team',
+    roles: [{ title: 'Software Engineer II', start: 'Mar 2025', end: 'Apr 2026' }],
   },
   {
     company: 'Qualtrics',
     url: 'https://www.qualtrics.com',
-    title: 'Software Engineer II',
-    start: 'Aug 2021',
-    end: 'Feb 2025',
     city: 'Seattle, WA',
-    team: 'Employee Experience team',
+    team: 'Employee Experience (EX) team',
+    roles: [
+      { title: 'Software Engineer II', start: 'May 2023', end: 'Feb 2025' },
+      { title: 'Software Engineer I', start: 'Aug 2021', end: 'May 2023' },
+    ],
   },
 ];
 
@@ -58,6 +62,7 @@ export const earlier: EarlierItem[] = [
 export const education = {
   school: 'Hunter College',
   program: 'Daedalus Honors Program',
-  degree: 'Bachelor’s in Computer Science, minors in Math and Theatre',
+  degree: 'Bachelor’s in Computer Science',
+  minors: 'Minors in Math and Theatre',
   when: '2017 — 2021',
 };

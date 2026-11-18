@@ -5,16 +5,23 @@ interface Props {
   job: Job;
 }
 const { job } = Astro.props;
+const [latest, ...earlier] = job.roles;
 ---
 
 <article class="job">
   <h3 class="job__head">
     {job.url ? <a href={job.url} target="_blank" rel="noopener">{job.company}</a> : job.company}
-    <span class="muted"> — {job.title}</span>
+    <span class="muted"> — {latest.title}</span>
   </h3>
   <p class="label">
-    {job.start} — {job.end}<span class="sep" aria-hidden="true">·</span>{job.city}
+    {latest.start} — {latest.end}<span class="sep" aria-hidden="true">·</span>{job.city}
   </p>
+  {earlier.map((r) => (
+    <div class="job__role">
+      <p class="muted">{r.title}</p>
+      <p class="label">{r.start} — {r.end}</p>
+    </div>
+  ))}
   <p class="job__team">{job.team}</p>
 </article>
 
@@ -22,6 +29,7 @@ const { job } = Astro.props;
   .job + :global(.job) { margin-top: var(--s-6); }
   .job__head { font-weight: var(--fw-medium); }
   .job__head .muted { font-weight: var(--fw-regular); }
-  .job p + p { margin-top: var(--s-1); }
-  .job__team { font-size: var(--fs-small); }
+  .job p + p { margin-top: 0; }
+  .job__role { margin-top: var(--s-2); }
+  .job__team { margin-top: var(--s-2); font-size: var(--fs-small); }
 </style>

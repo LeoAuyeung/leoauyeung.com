@@ -27,6 +27,7 @@ Personal site for Leo Au-Yeung. Minimal, recruiter-first. Full design spec: `doc
 - Links are text, underlined on hover. Accent color only on the hero name and link hover.
 - Every piece of meta text (dates, places, tags, captions, nav) uses the `.label` mono style: 12px, uppercase, 0.06em tracking (nav/captions are lowercase via `.label--lower`).
 - Sentence case for prose, lowercase for nav and captions.
+- Always use the Oxford comma in copy.
 - Text column max 680px (`--w-text`), photo grid max 1100px (`--w-wide`).
 - Light theme `#fafaf8` / `#111`, automatic dark via `prefers-color-scheme`. Never hard-code colors or sizes outside global.css.
 - Only JS allowed: scroll fade-in (IntersectionObserver, off under reduced motion) and the photo lightbox.

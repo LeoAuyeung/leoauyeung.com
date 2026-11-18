@@ -19,8 +19,8 @@ import { projects } from '../data/projects';
     <Section id="about" label="About">
       <div class="prose">
         <p>
-          I’m Leo, a creator building at the intersection of engineering, creativity and community. Much of
-          my experience comes from Hunter College, Stuyvesant High School and growing up in New York City.
+          I’m Leo, a creator building at the intersection of engineering, creativity, and community. Much of
+          my experience comes from Hunter College, Stuyvesant High School, and growing up in New York City.
           I’ve built onboarding platforms for the team at Numina, Google suite integrations at Qualtrics, and
           the Heatmap product on Qualtrics’ Employee Experience team, to name a few. At Hunter, I organized
           the first Hunter Codefest — the first remote hackathon sponsored by Google.
@@ -58,6 +58,7 @@ import { projects } from '../data/projects';
           <span class="strong">{education.school}</span> <span class="muted">— {education.program}</span>
           <span class="label when">{education.when}</span>
           <span class="note">{education.degree}</span>
+          <span class="note note--minor">{education.minors}</span>
         </p>
       </div>
 
@@ -82,6 +83,7 @@ import { projects } from '../data/projects';
   .oneliners { display: grid; gap: var(--s-2); }
   .when { margin-left: var(--s-2); white-space: nowrap; }
   .note { display: block; font-size: var(--fs-small); }
+  .note--minor { font-size: var(--fs-xsmall); color: var(--muted); }
   .more { margin-top: var(--s-7); }
   .more a { color: var(--ink); }
   .more a:hover { color: var(--accent); }
