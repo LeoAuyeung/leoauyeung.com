@@ -25,7 +25,7 @@ const { project } = Astro.props;
   <p class="project__blurb prose">
     {project.blurb}
     {project.blurbLink && (
-      <>{project.blurbLink.lead}<a href={project.blurbLink.href} target="_blank" rel="noopener">{project.blurbLink.text}</a>.</>
+      <>{project.blurbLink.lead}<a href={project.blurbLink.href} target="_blank" rel="noopener">{project.blurbLink.text}<span class="visually-hidden"> ({project.title} live demo)</span></a>.</>
     )}
   </p>
 </article>
