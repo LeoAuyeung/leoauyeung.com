@@ -15,10 +15,13 @@ export const projects: Project[] = [
   {
     title: 'Change',
     year: 2020,
-    tags: ['HackNYU', '1st place', 'mobile'],
+    tags: ['HackNYU', '1st place sustainability project', 'React Native'],
     blurb:
-      'A mobile app that rounds up everyday purchases and donates the spare change to environmental charities. Won 1st place in the sustainability track.',
-    links: [{ label: 'post', href: 'https://bit.ly/changeHackNYU20' }],
+      'A mobile app that rounds up everyday card purchases and donates the spare change to environmental charities, built with React Native, Plaid and the Charity Navigator API.',
+    links: [
+      { label: 'code', href: 'https://github.com/LeoAuyeung/Change' },
+      { label: 'devpost', href: 'https://devpost.com/software/change-o9yabw' },
+    ],
   },
   {
     title: 'Scholars at Risk',

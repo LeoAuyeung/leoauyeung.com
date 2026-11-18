@@ -23,7 +23,7 @@ export const jobs: Job[] = [
     title: 'Software Engineer II',
     start: 'Mar 2025',
     end: 'Apr 2026',
-    city: 'New York',
+    city: 'New York, NY',
     team: 'Fraud User Interventions team',
   },
   {
@@ -32,7 +32,7 @@ export const jobs: Job[] = [
     title: 'Software Engineer II',
     start: 'Aug 2021',
     end: 'Feb 2025',
-    city: 'Seattle',
+    city: 'Seattle, WA',
     team: 'Employee Experience team',
   },
 ];
@@ -41,7 +41,7 @@ export const earlier: EarlierItem[] = [
   {
     org: 'Qualtrics',
     title: 'Software Engineer Intern',
-    when: 'Summer 2020',
+    when: '2020',
   },
   {
     org: 'Numina',

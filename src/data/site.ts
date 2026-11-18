@@ -27,7 +27,6 @@ export const site = {
 export const nav: Link[] = [
   { label: 'work', href: '/work' },
   { label: 'photos', href: '/photos' },
-  { label: 'résumé ↗', href: site.resume },
 ];
 
 export const contacts: Link[] = [

@@ -31,4 +31,4 @@ Personal site for Leo Au-Yeung. Minimal, recruiter-first. Full design spec: `doc
 - Light theme `#fafaf8` / `#111`, automatic dark via `prefers-color-scheme`. Never hard-code colors or sizes outside global.css.
 - Only JS allowed: scroll fade-in (IntersectionObserver, off under reduced motion) and the photo lightbox.
 - Keep `#about`, `#experience`, `#projects` ids on /work; the landing page redirects those old hashes to /work.
-- No phone number in page content. `public/resume.pdf` is Leo's own Google Doc export and includes his phone by his choice.
+- Never put a phone number on the site, including `public/resume.pdf` (use Leo's no-phone export).
