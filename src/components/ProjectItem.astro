@@ -22,7 +22,12 @@ const { project } = Astro.props;
     {project.year}
     {project.tags.map((t) => <><span class="sep" aria-hidden="true">·</span>{t}</>)}
   </p>
-  <p class="project__blurb">{project.blurb}</p>
+  <p class="project__blurb prose">
+    {project.blurb}
+    {project.blurbLink && (
+      <>{project.blurbLink.lead}<a href={project.blurbLink.href} target="_blank" rel="noopener">{project.blurbLink.text}</a>.</>
+    )}
+  </p>
 </article>
 
 <style>

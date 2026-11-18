@@ -2,14 +2,13 @@ export interface Role {
   title: string;
   start: string; // "Mar 2025"
   end: string; // "Apr 2026" or "Present"
+  team: string;
 }
 
 export interface Job {
   company: string;
   url?: string;
   city: string;
-  /** Written once per company, under all roles. */
-  team: string;
   /** Newest first. The first role's title and dates go on the heading lines. */
   roles: Role[];
 }
@@ -26,17 +25,17 @@ export const jobs: Job[] = [
     company: 'Stripe',
     url: 'https://stripe.com',
     city: 'New York, NY',
-    team: 'Risk — Fraud User Interventions team',
-    roles: [{ title: 'Software Engineer II', start: 'Mar 2025', end: 'Apr 2026' }],
+    roles: [
+      { title: 'Software Engineer II', start: 'Mar 2025', end: 'Apr 2026', team: 'Risk — Fraud User Interventions team' },
+    ],
   },
   {
     company: 'Qualtrics',
     url: 'https://www.qualtrics.com',
     city: 'Seattle, WA',
-    team: 'Employee Experience (EX) team',
     roles: [
-      { title: 'Software Engineer II', start: 'May 2023', end: 'Feb 2025' },
-      { title: 'Software Engineer I', start: 'Aug 2021', end: 'May 2023' },
+      { title: 'Software Engineer II', start: 'May 2023', end: 'Feb 2025', team: 'Employee Experience (EX) team' },
+      { title: 'Software Engineer I', start: 'Aug 2021', end: 'May 2023', team: 'Employee Experience (EX) team' },
     ],
   },
 ];
@@ -49,6 +48,7 @@ export const earlier: EarlierItem[] = [
   },
   {
     org: 'Numina',
+    url: 'https://www.linkedin.com/company/numina.co/about/',
     title: 'Software Engineer Intern',
     when: '2019',
   },

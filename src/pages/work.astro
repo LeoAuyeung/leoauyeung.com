@@ -45,7 +45,7 @@ import { projects } from '../data/projects';
         <ul class="oneliners">
           {earlier.map((e) => (
             <li>
-              <span class="strong">{e.org}</span> <span class="muted">— {e.title}</span>
+              <span class="strong">{e.url ? <a href={e.url} target="_blank" rel="noopener">{e.org}</a> : e.org}</span> <span class="muted">— {e.title}</span>
               {e.when && <span class="label when">{e.when}</span>}
             </li>
           ))}

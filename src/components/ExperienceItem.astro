@@ -16,13 +16,14 @@ const [latest, ...earlier] = job.roles;
   <p class="label">
     {latest.start} — {latest.end}<span class="sep" aria-hidden="true">·</span>{job.city}
   </p>
+  <p class="job__team">{latest.team}</p>
   {earlier.map((r) => (
     <div class="job__role">
       <p class="muted">{r.title}</p>
       <p class="label">{r.start} — {r.end}</p>
+      <p class="job__team">{r.team}</p>
     </div>
   ))}
-  <p class="job__team">{job.team}</p>
 </article>
 
 <style>
@@ -30,6 +31,6 @@ const [latest, ...earlier] = job.roles;
   .job__head { font-weight: var(--fw-medium); }
   .job__head .muted { font-weight: var(--fw-regular); }
   .job p + p { margin-top: 0; }
-  .job__role { margin-top: var(--s-2); }
-  .job__team { margin-top: var(--s-2); font-size: var(--fs-small); }
+  .job__role { margin-top: var(--s-3); }
+  .job__team { margin-top: var(--s-1); font-size: var(--fs-small); }
 </style>
