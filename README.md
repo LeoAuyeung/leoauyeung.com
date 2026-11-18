@@ -14,7 +14,6 @@ npm run preview   # serve the build
 ```
 
 Content lives in `src/data/*.ts`. Photos go in `src/assets/photos/` and are listed in `src/data/photos.ts`.
-Replace `public/resume.pdf` with your latest résumé (no phone number).
 
 ## Deploy
 
@@ -24,3 +23,12 @@ One-time setup:
 1. Remove the custom domain from the old `leoauyeung.github.io` repo (Settings → Pages), so this repo can claim it.
 2. In this repo: Settings → Pages → Source: **GitHub Actions**.
 3. Push to `master`, wait for the deploy, then set Custom domain to `leoauyeung.com` and tick **Enforce HTTPS**.
+
+## Résumé
+
+`leoauyeung.com/resume.pdf` is pulled from the Google Doc "Leo Au-Yeung Resume" on every deploy (`scripts/fetch-resume.sh`).
+
+- Edit the Google Doc; the site picks it up within a day (daily scheduled deploy).
+- To update right away: GitHub → Actions → "Deploy to GitHub Pages" → **Run workflow**, or `gh workflow run deploy.yml -R LeoAuyeung/leoauyeung.com`.
+- The doc must stay shared as "Anyone with the link" (Viewer is enough).
+- Safety net: if the download fails or the PDF contains a phone number, the deploy keeps the committed `public/resume.pdf` and shows a warning in the Actions log.
