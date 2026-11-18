@@ -39,7 +39,8 @@ Rules: no cards, borders around sections, box shadows, rounded buttons or icon c
 
 | Route | For | Contents |
 | --- | --- | --- |
-| `/` | Recruiters first, everyone | Hero (first screen), then About, Experience, Hackathons, Projects, Photos teaser, Footer |
+| `/` | Everyone | Hero only: name, "Software engineer. Native New Yorker.", "Experience: Stripe, Qualtrics", links |
+| `/work` | Recruiters | About, Experience (team one-liners, Earlier, Education), Projects, Footer |
 | `/photos` | People curious about the photography | Small header, photo grid, lightbox |
 | `/resume.pdf` | Recruiters | Current résumé, a static file |
 | `/404` | Anyone lost | One line and a link home |

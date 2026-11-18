@@ -3,9 +3,14 @@ import Nav from './Nav.astro';
 import { site, contacts, isExternal } from '../data/site';
 ---
 
+<script is:inline>
+  // Old single-page links (leoauyeung.com/#experience) now live on /work.
+  if (/^#(about|experience|projects)$/.test(location.hash)) location.replace('/work' + location.hash);
+</script>
+
 <div class="hero">
   <Nav />
-  <div class="hero__body wrap">
+  <main id="main" class="hero__body wrap">
     <h1 class="hero__name">{site.name}</h1>
     <p class="hero__line">{site.tagline}</p>
     {site.subline && <p class="hero__sub">{site.subline}</p>}
@@ -17,10 +22,7 @@ import { site, contacts, isExternal } from '../data/site';
         </li>
       ))}
     </ul>
-  </div>
-  <div class="hero__foot wrap">
-    <a class="hero__arrow" href="#about" aria-label="Scroll to about">↓</a>
-  </div>
+  </main>
 </div>
 
 <style>
@@ -28,12 +30,12 @@ import { site, contacts, isExternal } from '../data/site';
     min-height: 100vh;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr;
   }
   .hero__body {
     /* sits roughly 40% down the viewport */
     padding-top: calc(40svh - 7.5rem);
-    max-width: calc(var(--w-text) + var(--w-label) + var(--s-7) + 2 * var(--gutter));
+    padding-bottom: var(--s-8);
   }
   .hero__name,
   .hero__line,
@@ -53,17 +55,4 @@ import { site, contacts, isExternal } from '../data/site';
   }
   .hero__links a { color: var(--ink); }
   .hero__links a:hover { color: var(--accent); }
-  .hero__foot { padding-block: var(--s-6); }
-  .hero__arrow {
-    display: inline-block;
-    font-family: var(--font-mono);
-    color: var(--muted);
-    padding: var(--s-2);
-    margin-left: calc(-1 * var(--s-2));
-  }
-  .hero__arrow:hover { color: var(--accent); text-decoration: none; }
-  @media (prefers-reduced-motion: no-preference) {
-    .hero__arrow { animation: nudge 2.4s var(--ease) 1.5s 2; }
-    @keyframes nudge { 50% { transform: translateY(6px); } }
-  }
 </style>

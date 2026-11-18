@@ -7,17 +7,15 @@ export interface Photo {
   alt: string;
   /** Optional caption, shown in the lightbox: "place · year" */
   caption?: string;
-  /** Exactly three photos should be teasers (shown at the end of the home page). */
-  teaser?: boolean;
   /** Optional crop focus for the 4:5 grid, CSS object-position syntax. */
   position?: string;
 }
 
 /** Order here is the order on /photos. Placeholders until real photos are exported. */
 export const photos: Photo[] = [
-  { file: 'placeholder-01.jpg', alt: 'Placeholder photo 1', caption: 'new york · 2026', teaser: true },
-  { file: 'placeholder-02.jpg', alt: 'Placeholder photo 2', caption: 'brooklyn · 2025', teaser: true },
-  { file: 'placeholder-03.jpg', alt: 'Placeholder photo 3', caption: 'queens · 2025', teaser: true },
+  { file: 'placeholder-01.jpg', alt: 'Placeholder photo 1', caption: 'new york · 2026' },
+  { file: 'placeholder-02.jpg', alt: 'Placeholder photo 2', caption: 'brooklyn · 2025' },
+  { file: 'placeholder-03.jpg', alt: 'Placeholder photo 3', caption: 'queens · 2025' },
   { file: 'placeholder-04.jpg', alt: 'Placeholder photo 4' },
   { file: 'placeholder-05.jpg', alt: 'Placeholder photo 5', caption: 'chinatown · 2024' },
   { file: 'placeholder-06.jpg', alt: 'Placeholder photo 6' },
@@ -44,5 +42,3 @@ export function resolvePhotos(list: Photo[] = photos): ResolvedPhoto[] {
     return { ...p, src: mod.default };
   });
 }
-
-export const teaserPhotos = () => resolvePhotos(photos.filter((p) => p.teaser).slice(0, 3));

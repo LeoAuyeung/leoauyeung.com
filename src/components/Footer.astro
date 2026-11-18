@@ -6,7 +6,6 @@ const { wide = false } = Astro.props as { wide?: boolean };
 
 <footer class:list={['footer', 'wrap', 'label', { 'wrap--wide': wide }]}>
   <p>Designed and built by {site.name}, {site.year}</p>
-  <p><a href={site.source} target="_blank" rel="noopener">source ↗</a></p>
 </footer>
 
 <style>

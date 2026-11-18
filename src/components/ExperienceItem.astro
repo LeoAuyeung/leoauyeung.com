@@ -15,18 +15,12 @@ const { job } = Astro.props;
   <p class="label">
     {job.start} — {job.end}<span class="sep" aria-hidden="true">·</span>{job.city}
   </p>
-  {job.titleNote && <p class="label label--lower job__note">{job.titleNote}</p>}
-  <ul class="job__bullets">
-    {job.bullets.slice(0, 3).map((b) => <li>{b}</li>)}
-  </ul>
+  <p class="job__team">{job.team}</p>
 </article>
 
 <style>
-  .job + :global(.job) { margin-top: var(--s-7); }
+  .job + :global(.job) { margin-top: var(--s-6); }
   .job__head { font-weight: var(--fw-medium); }
   .job__head .muted { font-weight: var(--fw-regular); }
-  .job__note { margin-top: 0; }
-  .job__bullets { margin-top: var(--s-3); display: grid; gap: var(--s-2); }
-  .job__bullets li { position: relative; padding-left: 1.1em; }
-  .job__bullets li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+  .job p + p { margin-top: var(--s-1); }
 </style>

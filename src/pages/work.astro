@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Section from '../components/Section.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import Footer from '../components/Footer.astro';
+import Reveal from '../components/Reveal.astro';
+import { site } from '../data/site';
+import { jobs, earlier, education } from '../data/experience';
+import { projects } from '../data/projects';
+---
+
+<Base title="Work" description="Leo Au-Yeung’s experience and projects: Stripe, Qualtrics, and more.">
+  <Nav showName />
+  <main id="main">
+    <h1 class="visually-hidden">Work</h1>
+
+    <Section id="about" label="About">
+      <div class="prose">
+        <p>
+          I’m a software engineer in New York. Most recently I was at Stripe, working on risk systems that
+          fight fraud. Before that I spent three and a half years at Qualtrics building full-stack data
+          visualizations for enterprise customers.
+        </p>
+        <p>
+          What I love is the moment software stops being abstract — when a merchant gets paid on time, or a
+          manager finally sees what their team needs. I like owning that whole path, from the first design
+          doc to watching the numbers move.
+        </p>
+        <p>
+          Outside of work, I’m a recent two-time marathoner and a photographer
+          (<a href="/photos">some of it is here</a>), and I dabble in creative projects alongside tech.
+          Native New Yorker; Stuyvesant High School and Hunter College alum.
+        </p>
+      </div>
+    </Section>
+
+    <Section id="experience" label="Experience">
+      {jobs.map((job) => <ExperienceItem job={job} />)}
+
+      <div class="sub">
+        <h3 class="label">Earlier</h3>
+        <ul class="oneliners">
+          {earlier.map((e) => (
+            <li>
+              <span class="strong">{e.org}</span> <span class="muted">— {e.title}</span>
+              {e.when && <span class="label when">{e.when}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3 class="label">Education</h3>
+        <p>
+          <span class="strong">{education.school}</span> <span class="muted">— {education.program}</span>
+          <span class="label when">{education.when}</span>
+          <span class="note">{education.degree}</span>
+        </p>
+      </div>
+
+      <p class="more label label--lower">
+        <a href={site.resume} target="_blank" rel="noopener">full résumé ↗</a>
+      </p>
+    </Section>
+
+    <Section id="projects" label="Projects">
+      {projects.map((p) => <ProjectItem project={p} />)}
+    </Section>
+  </main>
+  <Footer />
+  <Reveal />
+</Base>
+
+<style>
+  main { padding-top: var(--s-5); }
+  .strong { font-weight: var(--fw-medium); }
+  .sub { margin-top: var(--s-7); }
+  .sub > .label { margin-bottom: var(--s-3); }
+  .oneliners { display: grid; gap: var(--s-2); }
+  .when { margin-left: var(--s-2); white-space: nowrap; }
+  .note { display: block; }
+  .more { margin-top: var(--s-7); }
+  .more a { color: var(--ink); }
+  .more a:hover { color: var(--accent); }
+</style>

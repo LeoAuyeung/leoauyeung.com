@@ -31,7 +31,7 @@ export const projects: Project[] = [
   {
     title: 'Pokémon: Fantastic Version',
     year: 2016,
-    tags: ['Java', 'game'],
+    tags: ['Java', 'terminal'],
     blurb:
       'A terminal Pokémon game with catching, gym battles, leveling and evolution, built with a classmate for AP Computer Science.',
     links: [{ label: 'code', href: 'https://github.com/LeoAuyeung/Team-Fantastic-Baby' }],
