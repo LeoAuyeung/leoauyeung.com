@@ -15,8 +15,9 @@ import { site, contacts, isExternal } from '../data/site';
     <p class="hero__line">{site.tagline}</p>
     {site.subline && <p class="hero__sub">{site.subline}</p>}
     <ul class="hero__links label label--lower" aria-label="Contact">
-      {contacts.map((c) => (
+      {contacts.map((c, i) => (
         <li>
+          {i > 0 && <span class="sep" aria-hidden="true">·</span>}
           <a href={c.href} {...(isExternal(c.href) ? { target: '_blank', rel: 'noopener' } : {})}>{c.label}</a>
         </li>
       ))}
@@ -50,16 +51,14 @@ import { site, contacts, isExternal } from '../data/site';
   }
   .hero__name { color: var(--accent); }
   .hero__line { margin-top: 0; }
-  .hero__sub { color: var(--muted); margin-top: var(--s-5); }
+  .hero__sub { color: var(--muted); margin-top: var(--s-4); font-size: var(--fs-sub); }
   .hero__links {
-    display: grid;
-    gap: var(--s-1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--s-2);
     margin-top: var(--s-6);
   }
-  .hero__links a {
-    display: inline-block;
-    padding: var(--s-1) var(--s-2);
-    color: var(--ink);
-  }
+  .hero__links a { color: var(--ink); }
   .hero__links a:hover { color: var(--accent); }
 </style>

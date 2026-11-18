@@ -10,13 +10,13 @@ export const site = {
   company: 'Stripe',
   city: 'New York',
   /** Hero line, kept under 15 words. */
-  tagline: 'Software engineer. Native New Yorker.',
+  tagline: 'Software engineer; native New Yorker',
   /** Optional second clause in the hero. */
-  subline: 'Experience: Stripe, Qualtrics',
+  subline: 'prev @ Stripe, Qualtrics',
   description:
     'Leo Au-Yeung is a software engineer and native New Yorker, with experience at Stripe and Qualtrics. Also a photographer and two-time marathoner.',
   url: 'https://leoauyeung.com',
-  email: 'leo297747@gmail.com',
+  email: 'hello@leoauyeung.com',
   linkedin: 'https://www.linkedin.com/in/leo-au-yeung/',
   github: 'https://github.com/leoauyeung',
   instagram: '',

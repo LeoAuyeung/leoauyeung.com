@@ -17,7 +17,7 @@ export const projects: Project[] = [
     year: 2020,
     tags: ['HackNYU', '1st place sustainability project', 'React Native'],
     blurb:
-      'A mobile app that rounds up everyday card purchases and donates the spare change to environmental charities, built with React Native, Plaid and the Charity Navigator API.',
+      'A mobile app that rounds up everyday card purchases and donates the spare change to environmental charities, built with React Native and the Plaid API.',
     links: [
       { label: 'code', href: 'https://github.com/LeoAuyeung/Change' },
       { label: 'devpost', href: 'https://devpost.com/software/change-o9yabw' },
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     year: 2019,
     tags: ['JPMC Code for Good', '2nd place', 'web'],
     blurb:
-      'A multilingual web app, built in 24 hours, that lets academics anonymously report self-censorship and turns the reports into visualizations for the nonprofit.',
+      'A multilingual React app that lets academics anonymously report self-censorship and turns the reports into visualizations for the nonprofit.',
     links: [{ label: 'post', href: 'https://bit.ly/pactCFG19' }],
   },
   {

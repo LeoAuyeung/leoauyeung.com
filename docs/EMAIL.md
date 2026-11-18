@@ -1,5 +1,7 @@
 # hello@leoauyeung.com — email forwarding
 
+**Status:** live since 2026-11-18. Squarespace forwards `hello@` to Gmail via Mailgun (MX `mxa/mxb.mailgun.org`, SPF `include:mailgun.org`).
+
 ## How it works
 A website and email are separate services that share a domain name. DNS holds a few kinds of records:
 
