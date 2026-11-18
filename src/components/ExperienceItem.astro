@@ -1,0 +1,32 @@
+---
+import type { Job } from '../data/experience';
+
+interface Props {
+  job: Job;
+}
+const { job } = Astro.props;
+---
+
+<article class="job">
+  <h3 class="job__head">
+    {job.url ? <a href={job.url} target="_blank" rel="noopener">{job.company}</a> : job.company}
+    <span class="muted"> — {job.title}</span>
+  </h3>
+  <p class="label">
+    {job.start} — {job.end}<span class="sep" aria-hidden="true">·</span>{job.city}
+  </p>
+  {job.titleNote && <p class="label label--lower job__note">{job.titleNote}</p>}
+  <ul class="job__bullets">
+    {job.bullets.slice(0, 3).map((b) => <li>{b}</li>)}
+  </ul>
+</article>
+
+<style>
+  .job + :global(.job) { margin-top: var(--s-7); }
+  .job__head { font-weight: var(--fw-medium); }
+  .job__head .muted { font-weight: var(--fw-regular); }
+  .job__note { margin-top: 0; }
+  .job__bullets { margin-top: var(--s-3); display: grid; gap: var(--s-2); }
+  .job__bullets li { position: relative; padding-left: 1.1em; }
+  .job__bullets li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+</style>

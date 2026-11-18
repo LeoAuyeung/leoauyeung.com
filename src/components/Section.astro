@@ -1,0 +1,39 @@
+---
+interface Props {
+  id: string;
+  label: string;
+}
+const { id, label } = Astro.props;
+const headingId = `${id}-heading`;
+---
+
+<section id={id} class="section wrap" aria-labelledby={headingId} data-reveal>
+  <h2 id={headingId} class="section__label label">{label}</h2>
+  <div class="section__body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: var(--s-4);
+    padding-block: var(--s-8);
+    scroll-margin-top: var(--s-5);
+  }
+  .section__body { max-width: var(--w-text); min-width: 0; }
+
+  @media (min-width: 768px) {
+    .section {
+      grid-template-columns: var(--w-label) minmax(0, 1fr);
+      column-gap: var(--s-7);
+      align-items: start;
+    }
+    .section__label {
+      position: sticky;
+      top: var(--s-6);
+      /* align with first line of body text */
+      padding-top: 0.2em;
+    }
+  }
+</style>

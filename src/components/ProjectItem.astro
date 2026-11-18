@@ -1,0 +1,35 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<article class="project">
+  <div class="project__head">
+    <h3>{project.title}</h3>
+    <ul class="project__links label label--lower">
+      {project.links.map((l) => (
+        <li>
+          <a href={l.href} target="_blank" rel="noopener">{l.label} ↗<span class="visually-hidden"> ({project.title})</span></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <p class="label">
+    {project.year}
+    {project.tags.map((t) => <><span class="sep" aria-hidden="true">·</span>{t}</>)}
+  </p>
+  <p class="project__blurb">{project.blurb}</p>
+</article>
+
+<style>
+  .project + :global(.project) { margin-top: var(--s-6); }
+  .project__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); }
+  .project__links { display: flex; gap: var(--s-4); flex-shrink: 0; }
+  .project__links a { color: var(--ink); }
+  .project__links a:hover { color: var(--accent); }
+  .project__blurb { margin-top: var(--s-2); }
+</style>

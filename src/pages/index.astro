@@ -1,13 +1,103 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import Footer from '../components/Footer.astro';
+import Reveal from '../components/Reveal.astro';
+import { site } from '../data/site';
+import { jobs, earlier, education } from '../data/experience';
+import { projects } from '../data/projects';
+import { highlights, alsoAttended } from '../data/hackathons';
 ---
 
 <Base>
   <Hero />
   <main id="main">
-    <section id="about" class="wrap" style="min-height: 50vh;">
-      <p class="label">About — coming in Phase 4</p>
-    </section>
+    <Section id="about" label="About">
+      <div class="prose">
+        <p>
+          I’m a software engineer in New York, most recently at{' '}
+          <a href="https://stripe.com" target="_blank" rel="noopener">Stripe</a>, where I built risk systems
+          that decide when a merchant’s money moves. Before that I spent three and a half years at{' '}
+          <a href="https://www.qualtrics.com" target="_blank" rel="noopener">Qualtrics</a> shipping data
+          products for enterprise customers.
+        </p>
+        <p>
+          I like owning work end to end, from the first design doc to the metric that shows real users are
+          better off. That has meant payout systems, reliability work, accessibility and the migrations
+          nobody else wants to pick up.
+        </p>
+        <p>
+          Outside work I’m a two-time marathoner, a photographer (<a href="/photos">some of it is here</a>)
+          and a creator. Born and raised in New York, Stuyvesant and Hunter College alum.
+        </p>
+      </div>
+    </Section>
+
+    <Section id="experience" label="Experience">
+      {jobs.map((job) => <ExperienceItem job={job} />)}
+
+      <div class="sub">
+        <h3 class="label">Earlier</h3>
+        <ul class="oneliners">
+          {earlier.map((e) => (
+            <li>
+              <span class="strong">{e.org}</span> <span class="muted">— {e.title}</span>
+              {e.when && <span class="label when">{e.when}</span>}
+              <span class="note">{e.note}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3 class="label">Education</h3>
+        <p>
+          <span class="strong">{education.school}</span> <span class="muted">— {education.program}</span>
+          <span class="label when">{education.when}</span>
+          <span class="note">{education.degree}</span>
+        </p>
+      </div>
+
+      <p class="more label label--lower">
+        <a href={site.resume} target="_blank" rel="noopener">full résumé ↗</a>
+      </p>
+    </Section>
+
+    <Section id="hackathons" label="Hackathons">
+      <ul class="oneliners">
+        {highlights.map((h) => (
+          <li>
+            <span class="strong">
+              {h.href ? <a href={h.href} target="_blank" rel="noopener">{h.name}</a> : h.name}
+            </span>
+            {h.year && <span class="label when">{h.year}</span>}
+            {h.result && <span class="note">{h.result}</span>}
+          </li>
+        ))}
+      </ul>
+      <p class="label label--lower also">also: {alsoAttended.join(' · ')}</p>
+    </Section>
+
+    <Section id="projects" label="Projects">
+      {projects.map((p) => <ProjectItem project={p} />)}
+    </Section>
   </main>
+  <Footer />
+  <Reveal />
 </Base>
+
+<style>
+  .strong { font-weight: var(--fw-medium); }
+  .sub { margin-top: var(--s-7); }
+  .sub > .label { margin-bottom: var(--s-3); }
+  .oneliners { display: grid; gap: var(--s-4); }
+  .when { margin-left: var(--s-2); white-space: nowrap; }
+  .note { display: block; }
+  .more { margin-top: var(--s-7); }
+  .more a { color: var(--ink); }
+  .more a:hover { color: var(--accent); }
+  .also { margin-top: var(--s-5); }
+</style>
