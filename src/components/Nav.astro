@@ -38,6 +38,8 @@ const here = Astro.url.pathname.replace(/\/$/, '');
     padding-block: var(--s-5);
   }
   .nav--named { justify-content: space-between; }
+  /* Without the name, keep an invisible body-size line so the links sit at the same height on every page. */
+  .nav:not(.nav--named)::before { content: '\200b'; line-height: var(--lh-body); }
   .nav__name { font-weight: var(--fw-medium); }
   ul { display: flex; flex-wrap: nowrap; white-space: nowrap; }
   ul a { color: var(--ink); }
