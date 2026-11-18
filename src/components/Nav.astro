@@ -4,12 +4,14 @@ import { nav, site, isExternal } from '../data/site';
 interface Props {
   /** Show the name on the left (used on inner pages). */
   showName?: boolean;
+  /** Match the wide photo layout. */
+  wide?: boolean;
 }
-const { showName = false } = Astro.props;
+const { showName = false, wide = false } = Astro.props;
 const here = Astro.url.pathname.replace(/\/$/, '');
 ---
 
-<header class:list={['nav', 'wrap', { 'nav--named': showName }]}>
+<header class:list={['nav', 'wrap', { 'nav--named': showName, 'wrap--wide': wide }]}>
   {showName && <a class="nav__name" href="/">{site.name}</a>}
   <nav aria-label="Main">
     <ul class="label label--lower">

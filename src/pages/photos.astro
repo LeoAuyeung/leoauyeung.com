@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Photos" description="Photography by Leo Au-Yeung, mostly around New York.">
+  <Nav showName wide />
+  <main id="main" class="wrap wrap--wide">
+    <h1 class="visually-hidden">Photos</h1>
+    <PhotoGrid />
+  </main>
+  <Footer wide />
+  <Lightbox />
+</Base>
+
+<style>
+  main { padding-top: var(--s-5); }
+</style>

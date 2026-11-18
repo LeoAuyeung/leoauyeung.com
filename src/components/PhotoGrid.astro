@@ -1,0 +1,75 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import { resolvePhotos } from '../data/photos';
+
+const items = await Promise.all(
+  resolvePhotos().map(async (p) => {
+    // Full-size version for the lightbox (original aspect ratio).
+    const longEdge = Math.min(2000, Math.max(p.src.width, p.src.height));
+    const full = await getImage({
+      src: p.src,
+      format: 'webp',
+      ...(p.src.width >= p.src.height ? { width: longEdge } : { height: longEdge }),
+      quality: 82,
+    });
+    return { ...p, full };
+  }),
+);
+---
+
+<ul class="grid" data-lightbox-group>
+  {items.map((p, i) => (
+    <li>
+      <a
+        href={p.full.src}
+        class="grid__item"
+        data-index={i}
+        data-full={p.full.src}
+        data-w={p.full.attributes.width}
+        data-h={p.full.attributes.height}
+        data-caption={p.caption ?? ''}
+        data-alt={p.alt}
+        aria-label={`Open photo ${i + 1} of ${items.length}${p.caption ? `: ${p.caption}` : ''}`}
+      >
+        <Picture
+          src={p.src}
+          alt={p.alt}
+          width={800}
+          height={1000}
+          fit="cover"
+          position={p.position ?? 'center'}
+          widths={[400, 600, 800, 1100]}
+          sizes="(min-width: 1100px) 366px, (min-width: 768px) 33vw, (min-width: 520px) 50vw, 100vw"
+          formats={['avif', 'webp']}
+          loading={i < 3 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
+  }
+  @media (min-width: 520px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .grid__item {
+    display: block;
+    aspect-ratio: 4 / 5;
+    background: var(--faint);
+    overflow: hidden;
+  }
+  .grid__item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 300ms var(--ease);
+  }
+  .grid__item:hover :global(img) { opacity: 0.88; }
+  .grid__item:focus-visible { outline-offset: 2px; }
+</style>
