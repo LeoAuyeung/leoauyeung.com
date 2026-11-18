@@ -1,0 +1,44 @@
+---
+import { nav, site, isExternal } from '../data/site';
+
+interface Props {
+  /** Show the name on the left (used on inner pages). */
+  showName?: boolean;
+}
+const { showName = false } = Astro.props;
+const here = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<header class:list={['nav', 'wrap', { 'nav--named': showName }]}>
+  {showName && <a class="nav__name" href="/">{site.name}</a>}
+  <nav aria-label="Main">
+    <ul class="label label--lower">
+      {nav.map((item, i) => (
+        <li>
+          {i > 0 && <span class="sep" aria-hidden="true">·</span>}
+          <a
+            href={item.href}
+            {...(isExternal(item.href) ? { target: '_blank', rel: 'noopener' } : {})}
+            aria-current={here === item.href ? 'page' : undefined}
+          >{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: var(--s-4);
+    padding-block: var(--s-5);
+  }
+  .nav--named { justify-content: space-between; }
+  .nav__name { font-weight: var(--fw-medium); }
+  ul { display: flex; flex-wrap: nowrap; white-space: nowrap; }
+  ul a { color: var(--ink); }
+  ul a:hover { color: var(--accent); }
+  [aria-current='page'] { text-decoration: underline; }
+</style>

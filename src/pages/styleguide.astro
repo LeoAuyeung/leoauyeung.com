@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+
+const colors = ['--bg', '--ink', '--muted', '--faint', '--accent'];
+const spaces = ['--s-1', '--s-2', '--s-3', '--s-4', '--s-5', '--s-6', '--s-7', '--s-8', '--s-9'];
+---
+
+<Base title="Styleguide">
+  <Nav showName />
+  <main id="main" class="wrap sg">
+    <section>
+      <p class="label">Colors</p>
+      <ul class="swatches">
+        {colors.map((c) => (
+          <li><span class="swatch" style={`background: var(${c})`}></span><code class="label label--lower">{c}</code></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <p class="label">Type</p>
+      <p class="hero-sample"><span class="accent">Leo Au-Yeung</span><br />Hero line, 22–28px, Geist.</p>
+      <p>Body 16px / 1.6 in Geist. The quick brown fox jumps over the lazy dog. <a href="#">Inline link</a> and <span class="muted">muted text</span>.</p>
+      <p class="prose">Prose link style: <a href="#">underlined, muted underline</a>.</p>
+      <p class="label">Label · 12px mono uppercase · Mar 2025 — Apr 2026 · New York</p>
+      <p class="label label--lower">caption · lowercase mono · brooklyn · 2025</p>
+    </section>
+
+    <section>
+      <p class="label">Spacing</p>
+      <ul class="spaces">
+        {spaces.map((s) => (
+          <li><span class="bar" style={`width: var(${s})`}></span><code class="label label--lower">{s}</code></li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .sg { display: grid; gap: var(--s-8); padding-block: var(--s-8); }
+  .sg section { display: grid; gap: var(--s-4); max-width: var(--w-text); }
+  .swatches, .spaces { display: grid; gap: var(--s-2); }
+  .swatches li, .spaces li { display: flex; align-items: center; gap: var(--s-4); }
+  .swatch { width: var(--s-7); height: var(--s-7); outline: 1px solid var(--muted); }
+  .bar { height: var(--s-3); background: var(--ink); }
+  .hero-sample { font-size: var(--fs-hero); line-height: var(--lh-hero); }
+  .accent { color: var(--accent); }
+</style>
