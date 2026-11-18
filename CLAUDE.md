@@ -34,3 +34,4 @@ Personal site for Leo Au-Yeung. Minimal, recruiter-first. Full design spec: `doc
 - Keep `#about`, `#experience`, `#projects` ids on /work; the landing page redirects those old hashes to /work.
 - Never put a phone number on the site, including `public/resume.pdf`.
 - `public/resume.pdf` is synced from Leo's Google Doc at deploy time by `scripts/fetch-resume.sh` (daily cron + manual run). The committed file is only a fallback; edit the doc, not the PDF.
+- Never commit the résumé doc's ID or a link to the doc. It lives in the `RESUME_DOC_ID` GitHub secret.

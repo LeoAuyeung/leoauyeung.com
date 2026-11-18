@@ -6,8 +6,7 @@
 # so a bad download can never take the site down or publish a phone number.
 set -uo pipefail
 
-DOC_ID="14Y0fivvh2DAqOqRpZT9XaHrhLmVZ-vzFxnChbMjapA4"   # "Leo Au-Yeung Resume" (shared: anyone with link)
-URL="https://docs.google.com/document/d/${DOC_ID}/export?format=pdf"
+# The Google Doc ID comes from the RESUME_DOC_ID repo secret. Never commit it.
 DEST="$(cd "$(dirname "$0")/.." && pwd)/public/resume.pdf"
 TMP="$(mktemp -t resume.XXXXXX)"
 trap 'rm -f "$TMP" "$TMP.txt"' EXIT
@@ -16,6 +15,10 @@ keep() {
   echo "::warning title=Résumé not updated::$1 Keeping the committed public/resume.pdf."
   exit 0
 }
+
+DOC_ID="${RESUME_DOC_ID:-}"
+[ -n "$DOC_ID" ] || keep "RESUME_DOC_ID is not set."
+URL="https://docs.google.com/document/d/${DOC_ID}/export?format=pdf"
 
 curl -fsSL --retry 3 --max-time 60 -o "$TMP" "$URL" || keep "Could not download the Google Doc export."
 

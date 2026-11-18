@@ -23,6 +23,8 @@ jobs:
       - uses: actions/checkout@v7
       - name: Pull latest résumé from Google Docs
         run: bash scripts/fetch-resume.sh
+        env:
+          RESUME_DOC_ID: ${{ secrets.RESUME_DOC_ID }}
       - uses: withastro/action@v6
 
   deploy:

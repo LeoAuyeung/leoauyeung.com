@@ -31,4 +31,5 @@ One-time setup:
 - Edit the Google Doc; the site picks it up within a day (daily scheduled deploy).
 - To update right away: GitHub → Actions → "Deploy to GitHub Pages" → **Run workflow**, or `gh workflow run deploy.yml -R LeoAuyeung/leoauyeung.com`.
 - The doc must stay shared as "Anyone with the link" (Viewer is enough).
+- The doc's ID lives in the `RESUME_DOC_ID` repository secret (Settings → Secrets and variables → Actions), not in the code. To run the sync locally: `RESUME_DOC_ID=<doc id> bash scripts/fetch-resume.sh`.
 - Safety net: if the download fails or the PDF contains a phone number, the deploy keeps the committed `public/resume.pdf` and shows a warning in the Actions log.
