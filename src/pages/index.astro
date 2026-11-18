@@ -1,6 +1,13 @@
 ---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
 ---
-<html lang="en">
-  <head><meta charset="utf-8" /><title>Leo Au-Yeung</title></head>
-  <body><p>Leo Au-Yeung — new site coming soon.</p></body>
-</html>
+
+<Base>
+  <Hero />
+  <main id="main">
+    <section id="about" class="wrap" style="min-height: 50vh;">
+      <p class="label">About — coming in Phase 4</p>
+    </section>
+  </main>
+</Base>
