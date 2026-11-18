@@ -3,6 +3,9 @@ import '@fontsource-variable/geist';
 import '@fontsource-variable/geist-mono';
 import '../styles/global.css';
 import { site } from '../data/site';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 interface Props {
   title?: string;
@@ -14,7 +17,9 @@ interface Props {
 const { title, description = site.description, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} · ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL('/og.png', Astro.site).href;
+// Fingerprint the preview image so Discord, Slack, iMessage etc. refetch it whenever it changes.
+const ogVersion = createHash('sha1').update(readFileSync(join(process.cwd(), 'public/og.png'))).digest('hex').slice(0, 8);
+const ogImage = new URL(`/og.png?v=${ogVersion}`, Astro.site).href;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
