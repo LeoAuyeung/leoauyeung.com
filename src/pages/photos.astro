@@ -4,18 +4,33 @@ import Nav from '../components/Nav.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
 import Lightbox from '../components/Lightbox.astro';
 import Footer from '../components/Footer.astro';
+import { photosReady } from '../data/flags';
 ---
 
-<Base title="Photos" description="Photography by Leo Au-Yeung, mostly around New York.">
-  <Nav showName />
-  <main id="main" class="wrap wrap--wide">
-    <h1 class="visually-hidden">Photos</h1>
-    <PhotoGrid />
-  </main>
-  <Footer wide />
-  <Lightbox />
-</Base>
+{photosReady ? (
+  <Base title="Photos" description="Photography by Leo Au-Yeung, mostly around New York.">
+    <Nav showName />
+    <main id="main" class="wrap wrap--wide grid-page">
+      <h1 class="visually-hidden">Photos</h1>
+      <PhotoGrid />
+    </main>
+    <Footer wide />
+    <Lightbox />
+  </Base>
+) : (
+  <Base title="Photos" description="Photography by Leo Au-Yeung, coming soon." noindex>
+    <Nav showName />
+    <main id="main" class="wrap wip">
+      <h1 class="label">photos</h1>
+      <p class="wip__line">Still developing — photos coming soon. <a href="/work">See my work →</a></p>
+    </main>
+    <Footer />
+  </Base>
+)}
 
 <style>
-  main { padding-top: var(--s-5); }
+  .grid-page { padding-top: var(--s-5); }
+  .wip { min-height: 60svh; display: grid; align-content: center; gap: var(--s-3); }
+  .wip__line { font-size: var(--fs-hero); line-height: var(--lh-hero); max-width: 28ch; }
+  .wip__line a { color: var(--accent); }
 </style>

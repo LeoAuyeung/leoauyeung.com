@@ -18,7 +18,7 @@ Personal site for Leo Au-Yeung. Minimal, recruiter-first. Full design spec: `doc
 - `src/data/` — ALL content (site.ts, experience.ts, projects.ts, photos.ts). Edit content here, never in components.
 - `src/components/` — Nav, Hero, Section, ExperienceItem, ProjectItem, PhotoGrid, Lightbox, Reveal, Footer
 - `src/layouts/Base.astro` — head, meta, fonts, theme
-- `src/pages/` — index (landing: hero only), work (about, experience, projects), photos, 404
+- `src/pages/` — index (landing: hero only), work (about, experience, projects), photos (WIP page until `photosReady` in src/data/flags.ts is true), 404
 - `src/assets/photos/` — source JPGs (sRGB, ~2400px long edge, GPS stripped)
 - `public/` — CNAME, resume.pdf, favicon.svg, og.png, sw.js (kill-switch for the old Gatsby service worker — keep until ~mid 2027)
 

@@ -13,7 +13,7 @@ npm run build     # type-check + build to dist/
 npm run preview   # serve the build
 ```
 
-Content lives in `src/data/*.ts`. Photos go in `src/assets/photos/` and are listed in `src/data/photos.ts`.
+Content lives in `src/data/*.ts`. Photos go in `src/assets/photos/` and are listed in `src/data/photos.ts`. `/photos` shows a "work in progress" page until `photosReady` in `src/data/flags.ts` is `true`.
 
 ## Deploy
 
